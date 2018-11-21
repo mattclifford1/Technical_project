@@ -94,8 +94,16 @@ else:
 	with open('SUN-RGBD_subset.pickle','rb') as pickle_in:
 		images, labels = pickle.load(pickle_in)
 
-
-
+## how to plot image with bounding box annotation
+# fig,ax = plt.subplots(1)
+# ax.imshow(im)
+# # show where it thinks the box should be 
+# anno = np.round(anno)
+# rect = patches.Rectangle((anno[0],anno[1]),anno[2],anno[3],linewidth=1,edgecolor='r',facecolor='none')
+# ax.add_patch(rect)		
+# plt.show(block=False)
+# plt.pause(5)
+# plt.close()
 
 
 ## once got file names try out the code from youtube.py

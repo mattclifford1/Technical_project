@@ -11,17 +11,17 @@ import pickle
 import os
 import scipy.io as sio
 
-
+path_to_dataset = '../datasets/SUN-RGBD/'  # change this for bc4 scratch space storage
 if not os.path.isfile('SUN-RGBD_convert_matlab.pickle'):
-	matlab_meta = sio.loadmat('../datasets/SUN-RGBD/SUNRGBDtoolbox/Metadata/SUNRGBDMeta.mat')
+	matlab_meta = sio.loadmat(path_to_dataset + 'SUNRGBDtoolbox/Metadata/SUNRGBDMeta.mat')
 
 	dataset = []  # don't know size because might be some missing data
 	no_data = 0   # count how many are missing annotations
 	for i in range(len(matlab_meta['SUNRGBDMeta'][0])):
 		rgb_file_path = matlab_meta['SUNRGBDMeta'][0][i][5][0]
 		depth_file_path = matlab_meta['SUNRGBDMeta'][0][i][4][0]
-		rgb_file_path = '../datasets/SUN-RGBD/' + rgb_file_path[17:len(rgb_file_path)]
-		depth_file_path = '../datasets/SUN-RGBD/' + depth_file_path[17:len(depth_file_path)]
+		rgb_file_path = path_to_dataset + rgb_file_path[17:len(rgb_file_path)]
+		depth_file_path = path_to_dataset + depth_file_path[17:len(depth_file_path)]
 		groundtruth2DBB = [] # initialse incase no data for an entry
 		groundtruth2Dlabel = []
 		try:
