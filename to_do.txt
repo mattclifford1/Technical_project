@@ -1,0 +1,13 @@
+Thursday tasks:
+
+Copy over or download SUNRGBD onto blue crystal
+Resize cropped images
+Input cropped images into a CNN
+Look into tranfering a model -- ResNet?
+Make a start at interim report 
+
+
+Start Conor's Coursework
+
+Finish DeepLab worksheets
+Potentially finish Portfolio?
