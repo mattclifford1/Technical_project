@@ -1,6 +1,6 @@
 # Files to not include:
 datasets/SUN-RGBD/SUNRGBDtoolbox/Metadata/SUNRGBD2Dseg.mat
-
+datasets/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
