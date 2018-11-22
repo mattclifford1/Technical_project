@@ -6,12 +6,16 @@
 ##							2: object bounding boxes 
 ##							3: object labels
 
-
 import pickle
 import os
 import scipy.io as sio
 
-path_to_dataset = '../datasets/SUN-RGBD/'  # change this for bc4 scratch space storage
+# check if running on blue crystal or not (need to get dataset location to scratch space)
+if os.getcwd() == '/mnt/storage/home/mc15445/Technical_project/test_code':
+	path_to_dataset = '/mnt/storage/scratch/mc15445/datasets/SUN-RGBD/'
+else:
+	path_to_dataset = '../datasets/SUN-RGBD/'  
+
 if not os.path.isfile('SUN-RGBD_convert_matlab.pickle'):
 	matlab_meta = sio.loadmat(path_to_dataset + 'SUNRGBDtoolbox/Metadata/SUNRGBDMeta.mat')
 
