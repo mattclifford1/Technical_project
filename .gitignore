@@ -1,6 +1,8 @@
 # Files to not include:
 datasets/SUN-RGBD/SUNRGBDtoolbox/Metadata/SUNRGBD2Dseg.mat
 datasets/
+SUN-RGBD_convert_matlab.pickle
+SUN-RGBD_file_list.pickle
 
 # tensorflow record data record files (large)
 *.tfrecords
