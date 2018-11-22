@@ -2,6 +2,9 @@
 datasets/SUN-RGBD/SUNRGBDtoolbox/Metadata/SUNRGBD2Dseg.mat
 datasets/
 
+# tensorflow record data record files (large)
+*.tfrecords
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
