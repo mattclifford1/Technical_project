@@ -1,0 +1,98 @@
+\documentclass[11pt]{article}
+
+% First load extension packages
+\usepackage[a4paper,margin=25mm]{geometry}    % page layout
+\usepackage{setspace} \onehalfspacing         % line spacing
+\usepackage{amsfonts,amssymb,amsmath}         % useful math extensions
+\usepackage{graphicx}                         % graphics import
+\usepackage{siunitx}                          % easy SI units
+
+% Change paragraph indentation
+\setlength{\parskip}{10pt}
+\setlength{\parindent}{0pt}
+
+% User-defined commands
+\newcommand{\diff}[2]{\frac{\mathrm{d}{#1}}{\mathrm{d}{#2}}}
+\newcommand{\ddiff}[2]{\frac{\mathrm{d}^2{#1}}{\mathrm{d}{#2}^2}}
+\newcommand{\pdiff}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\pddiff}[2]{\frac{\partial^2{#1}}{\partial{#2}^2}}
+\newcommand{\pdiffdiff}[3]{\frac{\partial^2{#1}}{\partial{#2}\partial{#3}}}
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+\newcommand{\Idx}{\;\mathrm{d}x}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Rational}{\mathbb{Q}}
+\newcommand{\Integer}{\mathbb{Z}}
+\newcommand{\Natural}{\mathbb{N}}
+
+% topmatter
+\title{3D Object Recognition in the Wild}
+
+\author{Matt Clifford \\ Supervised by Dr R.\ Santos-Rodriguez}
+
+\date{\today}
+
+% main body
+\begin{document}
+\maketitle
+
+\section{Introduction}
+With recent advancements in affordable 3D sensing technology [ref kineckt and hololens], ...
+
+Fracture Reality [REF], has specific interest in 3D object recognition for future projects. They specialise in creating bespoke mixed reality software for both private and government sectors. Although they have many projects that would benefit from 3D object recognition, an ongoing project investigating how effectively the use of mixed reality is in tackling circulation issues[REF]. The use of 3D object recognition would identify and locate objects such as stairs, doors, elevators and escalators to aid the user in identifying where these are for their correct path. This aims to address bottle neck problems in unknown environments.
+
+The need for object recognition on a object to object basis, as will be specific for each task. However, retraining a classifier for such jobs is a big task, especially when some of the current architectures take weeks to train from scratch[REF]. Fracture Reality are able to create some object specific use case data, but in the region of hundreds of examples. This means that deep learning from scratch is not possible.
+
+Need for transfer of knowledge -- existing knowledge already out there.
+
+
+\section{Literature review}
+2D object recognition, explain about RCNN, fast-RCNN, faster-RCNN
+
+Frustum method using faster-RCNN
+
+Common representation -- do a little research
+	Auto encoder to possibly solve this 
+
+Cut and paste 2D data
+
+Unsupervised learning for creating data cheaply
+
+
+\section{Project plan}
+
+- collect dataset
+
+- CNN
+
+- RCNN
+
+- Transfer 2D model to 3D, elaborate on this
+
+- Autoencoder to find common representation
+
+- Generating objects in scenes using cut and paste in 3D
+
+\section{Progress}
+
+Extracted relevant annotations and labels form SUNRGBD dataset
+Using 2D annotations, only take a subset of objects and crop full image to just the object area.
+Train CNN on these cropped images to have a baseline 2D classifier.
+
+- show some examples of the dataset with annotations
+
+- show examples of cropped inputs
+
+- show network architecture (possibly find a paper for this)
+
+- discuss how this will help with RCNN
+
+- how RCNN will be used for the frustum method
+
+
+%Create the style, and include the bibliography.
+\bibliographystyle{plain}
+\bibliography{interim}
+
+% the end
+\end{document}
