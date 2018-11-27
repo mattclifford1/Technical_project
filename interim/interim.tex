@@ -26,7 +26,7 @@
 \newcommand{\Natural}{\mathbb{N}}
 
 % topmatter
-\title{3D Object Recognition in the Wild}
+\title{3D Object Detection in the Wild}
 
 \author{Matt Clifford \\ Supervised by Dr R.\ Santos-Rodriguez}
 
@@ -37,17 +37,21 @@
 \maketitle
 
 \section{Introduction}
-With recent advancements in affordable 3D sensing technology [ref kineckt and hololens], ...
+With recent advancements in 3D sensing technology [googleglasses and hololens], there is an interest in the use of mixed reality to create `smart spaces', where mixed reality users are informed and guided through environments unknown to them.
 
-Fracture Reality [REF], has specific interest in 3D object recognition for future projects. They specialise in creating bespoke mixed reality software for both private and government sectors. Although they have many projects that would benefit from 3D object recognition, an ongoing project investigating how effectively the use of mixed reality is in tackling circulation issues[REF]. The use of 3D object recognition would identify and locate objects such as stairs, doors, elevators and escalators to aid the user in identifying where these are for their correct path. This aims to address bottle neck problems in unknown environments.
+Fracture Reality [fracturereality.io], has specific interest in 3D object detection for future projects. They specialise in creating bespoke mixed reality software for both private and government sectors. They mostly work with mixed reality visualisations of maps of an environment, for example to aid the control centres in airports [https://www.youtube.com/watch?time_continue=2&v=t5L-jBLD04I]. Although they have many projects that would benefit from 3D object detection, an ongoing project investigating how the affect of mixed reality is in tackling circulation issues [REF]. The use of 3D object detection would identify and locate objects such as stairs, doors, elevators and escalators. This aids the user in identifying if these objects are correct pathway for them, addressing bottle neck problems. A variant use of this would be to help the visually or navigationally impaired, with mixed reality help from detected objects of importance.
 
-The need for object recognition on a object to object basis, as will be specific for each task. However, retraining a classifier for such jobs is a big task, especially when some of the current architectures take weeks to train from scratch[REF]. Fracture Reality are able to create some object specific use case data, but in the region of hundreds of examples. This means that deep learning from scratch is not possible.
-
-Need for transfer of knowledge -- existing knowledge already out there.
-
+The objects of interest for the object detection are on a case to case basis, due to specific needs of each project. Fracture Reality are able to create some object specific use case data, but in the region of hundreds of examples, and due to the specificity of each task, finding existing object datasets might not be possible. This leaves retraining a detector for every new object is infeasible. The need for a system that can detect objects given as little training examples as possible is therefore needed. This can be achieved by utilising general knowledge learnt from similar or relevant tasks and quickly applying it to the specific task of interest[https://arxiv.org/pdf/1310.1531.pdf].
 
 \section{Literature review}
-2D object recognition, explain about RCNN, fast-RCNN, faster-RCNN
+In 2012, Alex Krizhevsky et al. revolutionised computer vision with a convolution neural network (CNN), inspired by [http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf], which performed image classification on the ImageNet dataset [REF]. The CNN, named AlexNet, consists of 5 convolution layers followed by 3 fully-connected layers. It won ImageNet's ILSVRC-2010 and ILSVRC-2012 image classification contests [alex_net]. In [https://www.nvidia.cn/content/tesla/pdf/machine-learning/imagenet-classification-with-deep-convolutional-nn.pdf], they claim `All of our experiments suggest that our results can be improved simply by waiting for faster GPUs and bigger datasets to become available', and since AlexNet's success, there have been consistent advancements in CNN state of the art. In 2014, K. Simonyan and A. Zisserman introduced VGG16[https://arxiv.org/abs/1409.1556], consisting of 16 convolution layers followed by 3 fully-connected layers. VGG16 achieves a top-5 error rate of 7.4\% on ILSVRC-2014 compared to AlexNet's 17.0\%. [VGG16] achieves this performance boost by using smaller convolution filters, 3x3 compared to AlexNet's 11x11 which decreases the number of weights to train at each convolution layer, alongside a deeper convolution architecture, which can extract deeper relevant semantic meaning from the images. Further performance improvements were made by the use of `inception models' by C. Szegedy et al [https://arxiv.org/pdf/1409.4842.pdf][https://arxiv.org/abs/1512.00567], which stack the outputs of several convolutions of the same input, followed by filter concatenation. As well as `residual learning'[https://arxiv.org/abs/1512.03385], which connects the outputs of multiple convolution layer. A combination of `inception' and `residual' models was formulated by C. Szegedy et al [https://arxiv.org/abs/1602.07261]. Further improvements to 2D image classification include [https://arxiv.org/abs/1712.00559] [https://arxiv.org/abs/1707.07012].
+
+To identify the location of objects in images, [https://arxiv.org/abs/1311.2524] uses a regional CNN (RCNN) model. Regional proposals of the image, which are run though a modified AlexNet. The positive classification results from the regional proposals are then adjusted using a linear regression model to obtain better object bounding boxes. Computational speed ups are proposed in Fast-RNN [https://arxiv.org/abs/1504.08083], which pools the regional proposals. Further computational speed up are proposed in Faster-RNN [https://arxiv.org/abs/1506.01497], which combines the selective search regional proposals into the CNN. [https://arxiv.org/abs/1506.02640] proposes a computational speed up by using a search grid rather than regional proposals.
+
+Current
+
+3D object detection - talk about datasets, size, what sort of environments, how cropped is the object
+
 
 Frustum method using faster-RCNN
 
@@ -63,13 +67,13 @@ Unsupervised learning for creating data cheaply
 
 - collect dataset
 
-- CNN
+- CNN as baseline for classification
 
-- RCNN
+- faster-RCNN as baseline for 2D object detection
 
 - Transfer 2D model to 3D, elaborate on this
 
-- Autoencoder to find common representation
+- Auto-encoder to find common representation
 
 - Generating objects in scenes using cut and paste in 3D
 
@@ -83,7 +87,7 @@ Train CNN on these cropped images to have a baseline 2D classifier.
 
 - show examples of cropped inputs
 
-- show network architecture (possibly find a paper for this)
+- show network architecture
 
 - discuss how this will help with RCNN
 
