@@ -3,44 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: interim.aux
 The style file: plain.bst
 Database file #1: interim.bib
-You've used 39 entries,
+You've used 40 entries,
             2118 wiz_defined-function locations,
-            665 strings with 9896 characters,
-and the built_in function-call counts, 12366 in all, are:
-= -- 1137
-> -- 844
+            672 strings with 10228 characters,
+and the built_in function-call counts, 12999 in all, are:
+= -- 1189
+> -- 907
 < -- 3
-+ -- 332
-- -- 292
-* -- 861
-:= -- 2237
-add.period$ -- 120
-call.type$ -- 39
-change.case$ -- 263
++ -- 357
+- -- 316
+* -- 927
+:= -- 2351
+add.period$ -- 123
+call.type$ -- 40
+change.case$ -- 278
 chr.to.int$ -- 0
-cite$ -- 39
-duplicate$ -- 420
-empty$ -- 772
-format.name$ -- 292
-if$ -- 2446
+cite$ -- 40
+duplicate$ -- 431
+empty$ -- 799
+format.name$ -- 316
+if$ -- 2564
 int.to.chr$ -- 0
-int.to.str$ -- 39
-missing$ -- 36
-newline$ -- 198
-num.names$ -- 78
-pop$ -- 277
+int.to.str$ -- 40
+missing$ -- 37
+newline$ -- 203
+num.names$ -- 80
+pop$ -- 290
 preamble$ -- 1
-purify$ -- 224
+purify$ -- 238
 quote$ -- 0
-skip$ -- 315
+skip$ -- 322
 stack$ -- 0
-substring$ -- 346
-swap$ -- 67
+substring$ -- 372
+swap$ -- 68
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 156
+type$ -- 160
 warning$ -- 0
-while$ -- 91
-width$ -- 41
-write$ -- 397
+while$ -- 94
+width$ -- 42
+write$ -- 408

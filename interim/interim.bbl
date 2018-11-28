@@ -142,6 +142,14 @@ Zhile Ren and Erik~B Sudderth.
 \newblock {3D Object Detection with Latent Support Surfaces}.
 \newblock {\em CVPR}, 2018.
 
+\bibitem{ILSVRC15}
+Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma,
+  Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein,
+  Alexander~C. Berg, and Li~Fei-Fei.
+\newblock {ImageNet Large Scale Visual Recognition Challenge}.
+\newblock {\em International Journal of Computer Vision (IJCV)},
+  115(3):211--252, 2015.
+
 \bibitem{complex_YOLO}
 Martin Simon, Stefan Milz, Karl Amende, and Horst-Michael Gross.
 \newblock {Complex-YOLO: An Euler-Region-Proposal for Real-time 3D Object
