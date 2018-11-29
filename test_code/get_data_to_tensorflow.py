@@ -60,7 +60,7 @@ def create_data_record(out_filename, dataset):
 					print(dataset[entry][0])
 				
 				# resize cropped image
-				im = cv2.resize(im, (256, 256), interpolation=cv2.INTER_CUBIC)   # use 256 as standard preprocessing for ImageNet
+				im = cv2.resize(im, (256, 256), interpolation=cv2.INTER_CUBIC)   #use 256 as standard preprocessing for ImageNet
 
 				# Create a feature
 				feature = {
