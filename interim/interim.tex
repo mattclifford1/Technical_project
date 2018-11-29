@@ -87,7 +87,9 @@ Unsupervised learning for creating data cheaply
 
 Extracted relevant annotations and labels form SUNRGBD dataset
 Using 2D annotations, only take a subset of objects and crop full image to just the object area.
-Train CNN on these cropped images to have a baseline 2D classifier.
+Train CNN on these cropped images to have a baseline 2D classifier to see how well the objects in the SUNRGBD dataset objects can be classified, which shows how well an object detector could work.
+
+Transfer learning by truncating last layer of inception v3 trained on ImageNet. Since ImageNet has 1000 classes, the feature extraction from the network is very general and should apply well to similar classification tasks.
 
 - show some examples of the dataset with annotations
 

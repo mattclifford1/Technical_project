@@ -1,74 +1,123 @@
-from random import shuffle
-import glob
-import sys
-import cv2
-import numpy as np
-#import skimage.io as io
 import tensorflow as tf
+import cv2
+import sys
+import numpy as np
 
-def _int64_feature(value):
-    return tf.train.Feature(int64_list=tf.train.Int64List(value=[value]))
-def _bytes_feature(value):
-    return tf.train.Feature(bytes_list=tf.train.BytesList(value=[value]))
+sess = tf.Session()
+sess.run(tf.global_variables_initializer())
 
-def load_image(addr):
-    # read an image and resize to (224, 224)
-    # cv2 load images as BGR, convert it to RGB
-    img = cv2.imread(addr)
-    if img is None:
-        return None
-    img = cv2.resize(img, (224, 224), interpolation=cv2.INTER_CUBIC)
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    return img
- 
-def createDataRecord(out_filename, addrs, labels):
-    # open the TFRecords file
-    writer = tf.python_io.TFRecordWriter(out_filename)
-    for i in range(len(addrs)):
-        # print how many images are saved every 1000 images
-        if not i % 1000:
-            print('Train data: {}/{}'.format(i, len(addrs)))
-            sys.stdout.flush()
-        # Load the image
-        img = load_image(addrs[i])
+def parser(record):
+    keys_to_features = {
+        "image_raw": tf.FixedLenFeature([], tf.string),
+        "label":     tf.FixedLenFeature([], tf.int64)
+    }
+    parsed = tf.parse_single_example(record, keys_to_features)
+    image = tf.decode_raw(parsed["image_raw"], tf.uint8)
+    image = tf.cast(image, tf.float32)
+    #image = tf.reshape(image, shape=[224, 224, 3])
+    label = tf.cast(parsed["label"], tf.int32)
 
-        label = labels[i]
+    return {'image': image}, label
 
-        if img is None:
-            continue
 
-        # Create a feature
-        feature = {
-            'image_raw': _bytes_feature(img.tostring()),
-            'label': _int64_feature(label)
-        }
-        # Create an example protocol buffer
-        example = tf.train.Example(features=tf.train.Features(feature=feature))
-        
-        # Serialize to string and write on the file
-        writer.write(example.SerializeToString())
-        
-    writer.close()
-    sys.stdout.flush()
+def input_fn(filenames):
+  dataset = tf.data.TFRecordDataset(filenames=filenames, num_parallel_reads=40)
+  dataset = dataset.apply(
+      tf.contrib.data.shuffle_and_repeat(1024, 1)
+  )
+  dataset = dataset.apply(
+      tf.contrib.data.map_and_batch(parser, 32)
+  )
+  #dataset = dataset.map(parser, num_parallel_calls=12)
+  #dataset = dataset.batch(batch_size=1000)
+  dataset = dataset.prefetch(buffer_size=2)
+  return dataset
 
-cat_dog_train_path = 'PetImages/*/*.jpg'
-# read addresses and labels from the 'train' folder
-addrs = glob.glob(cat_dog_train_path)
-labels = [0 if 'Cat' in addr else 1 for addr in addrs]  # 0 = Cat, 1 = Dog
 
-# to shuffle data
-c = list(zip(addrs, labels))
-shuffle(c)
-addrs, labels = zip(*c)
+def train_input_fn():
+    return input_fn(filenames=["train.tfrecords", "test.tfrecords"])
+
+def val_input_fn():
+    return input_fn(filenames=["val.tfrecords"])
+
+def model_fn(features, labels, mode, params):
+    num_classes = 3
+    net = features["image"]
+
+    net = tf.identity(net, name="input_tensor")
     
-# Divide the data into 60% train, 20% validation, and 20% test
-train_addrs = addrs[0:int(0.6*len(addrs))]
-train_labels = labels[0:int(0.6*len(labels))]
-val_addrs = addrs[int(0.6*len(addrs)):int(0.8*len(addrs))]
-val_labels = labels[int(0.6*len(addrs)):int(0.8*len(addrs))]
-test_addrs = addrs[int(0.8*len(addrs)):]
-test_labels = labels[int(0.8*len(labels)):]
+    net = tf.reshape(net, [-1, 224, 224, 3])    
 
-createDataRecord('train.tfrecords', train_addrs, train_labels)
-createDataRecord('val.tfrecords', val_addrs, val_labels)
-createDataRecord('test.tfrecords', test_addrs, test_labels)
+    net = tf.identity(net, name="input_tensor_after")
+
+    net = tf.layers.conv2d(inputs=net, name='layer_conv1',
+                           filters=32, kernel_size=3,
+                           padding='same', activation=tf.nn.relu)
+    net = tf.layers.max_pooling2d(inputs=net, pool_size=2, strides=2)
+
+    net = tf.layers.conv2d(inputs=net, name='layer_conv2',
+                           filters=64, kernel_size=3,
+                           padding='same', activation=tf.nn.relu)
+    net = tf.layers.max_pooling2d(inputs=net, pool_size=2, strides=2)  
+
+    net = tf.layers.conv2d(inputs=net, name='layer_conv3',
+                           filters=64, kernel_size=3,
+                           padding='same', activation=tf.nn.relu)
+    net = tf.layers.max_pooling2d(inputs=net, pool_size=2, strides=2)    
+
+    net = tf.contrib.layers.flatten(net)
+
+    net = tf.layers.dense(inputs=net, name='layer_fc1',
+                        units=128, activation=tf.nn.relu)  
+    
+    net = tf.layers.dropout(net, rate=0.5, noise_shape=None, 
+                        seed=None, training=(mode == tf.estimator.ModeKeys.TRAIN))
+    
+    net = tf.layers.dense(inputs=net, name='layer_fc_2',
+                        units=num_classes)
+
+    logits = net
+    y_pred = tf.nn.softmax(logits=logits)
+
+    y_pred = tf.identity(y_pred, name="output_pred")
+
+    y_pred_cls = tf.argmax(y_pred, axis=1)
+
+    y_pred_cls = tf.identity(y_pred_cls, name="output_cls")
+
+
+    if mode == tf.estimator.ModeKeys.PREDICT:
+        spec = tf.estimator.EstimatorSpec(mode=mode,
+                                          predictions=y_pred_cls)
+    else:
+        cross_entropy = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=labels,
+                                                                       logits=logits)
+        loss = tf.reduce_mean(cross_entropy)
+
+        optimizer = tf.train.AdamOptimizer(learning_rate=params["learning_rate"])
+        train_op = optimizer.minimize(
+            loss=loss, global_step=tf.train.get_global_step())
+        metrics = {
+            "accuracy": tf.metrics.accuracy(labels, y_pred_cls)
+        }
+
+        spec = tf.estimator.EstimatorSpec(
+            mode=mode,
+            loss=loss,
+            train_op=train_op,
+            eval_metric_ops=metrics)
+        
+    return spec
+
+model = tf.estimator.Estimator(model_fn=model_fn,
+                               params={"learning_rate": 1e-4},
+                               model_dir="./model5/")
+
+count = 0
+while (count < 100000):
+    model.train(input_fn=train_input_fn, steps=1000)
+    result = model.evaluate(input_fn=val_input_fn)
+    print(result)
+    print("Classification accuracy: {0:.2%}".format(result["accuracy"]))
+    sys.stdout.flush()
+    count = count + 1
