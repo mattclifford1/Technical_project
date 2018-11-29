@@ -9,6 +9,9 @@
 \usepackage{url}
 \usepackage{wrapfig}
 \usepackage{float}
+\usepackage[small,compact]{titlesec}
+\usepackage{paralist} %and then replace \begin{itemize}\end{itemize} with \begin{compactitem}\end{compactitem}
+\usepackage{natbib} \setlength{\bibsep}{0.0pt}
 
 % Change paragraph indentation
 \setlength{\parskip}{10pt}
@@ -40,18 +43,13 @@
 \maketitle
 
 \section{Introduction}
-Explain why 3D object detection is important... cars... 2D is a simplification of the world, 3D gives us a better understanding.
+Object detection is important for computers to understand the real world. For example, helping a self driving car know what objects are in it's planned path. 2D object detection is where objects are classified and located in 2D space, an RGB image. However, since the world lies in 3 dimensions, this 2D simplification of the world isn't enough; if there is a cyclist on the road, the self driving car needs to know accurately where they are, to avoid a collision when overtaking. A lot of focus with 3D object detection has been with respect to self driving cars. Although they are in a `wild', unpredictable environment, they are confined to roads. This makes 3D object detection systems for them very specific, as they need to follow strict rules and are trained on days of driving footage. 
 
+With recent advancements in mixed reality technology from Google glass and Microsoft HoloLens, there is an interest in the use of mixed reality to help create `smart spaces'. Where mixed reality users are informed and guided through environments unknown to them. This addresses circulation issues, or aids the visually or navigationally impaired.
 
+Fracture Reality \cite{fracture}, have expressed specific interest in 3D object detection for future projects. They specialise in creating bespoke mixed reality software for both private and government sectors. They mostly work with mixed reality visualisations of maps of an environment, for example to aid the control centres in airports \cite{youtube}. Although they have many projects that would benefit from 3D object detection, an ongoing project which is investigating how effective the use of mixed reality is in tackling navigational issues of fire fighters in buildings new to them is. The use of 3D object detection would identify and locate objects such as stairs, doors and elevators. This would aid the fire fighter in identifying if these objects are correct pathway for them, without them having detailed prior knowledge of the building, since a map can be stored within the mixed reality device.
 
-With recent advancements in mixed reality technology from Google glass and Microsoft HoloLens, there is an interest in the use of mixed reality to help create `smart spaces', where mixed reality users are informed and guided through environments unknown to them, addressing circulation issues, or aiding the visually or navigationally impaired.
-
-Fracture Reality \cite{fracture}, has specific interest in 3D object detection for future projects. They specialise in creating bespoke mixed reality software for both private and government sectors. They mostly work with mixed reality visualisations of maps of an environment, for example to aid the control centres in airports \cite{youtube}. Although they have many projects that would benefit from 3D object detection, an ongoing project investigating how effective the use of mixed reality is in tackling navigational issues of fire fighters in buildings unknown to them. The use of 3D object detection would identify and locate objects such as stairs, doors and elevators. This would aid the fire fighter in identifying if these objects are correct pathway for them, without them having detailed prior knowledge of the building, since a map can be stored on the mixed reality device.
-
-Fracture Reality are able to create some object specific use case data, but in the region of hundreds of examples, and due to the specificity of each task, finding existing object datasets might not be possible. This leaves retraining a detector for every new object is infeasible. The need for a system that can detect objects given as little training examples as possible is therefore needed. This can be achieved by utilising general knowledge learnt from similar or relevant tasks and quickly applying it to the specific task of interest \cite{DeCAF}.
-
-Since objects of interest for the object detection are on a case to case basis, due to specific needs of each project. All that is certain, is that the objects are going to be in a real life setting. Therefore there is a need for a robust 3D object detection system that can cope in the wild, where object labels might not be clear and can change over time.
-
+Fracture Reality are able to create some object specific use case data, but in the region of hundreds of examples due to the expensive and time consuming nature of hand labelling 3D data. This is the main bottleneck in creating effective object detection systems. As well, due to the specificity of each task, finding existing object datasets in 3D is unlikely. This makes training a detector on 3D data alone for every new object is infeasible, especially considering the size of the datasets required in deep learning. 2D data however is more widely abundant and relatively cheap and quicker to obtain. The need for a system that can detect objects given as little training examples as possible which also makes use of 2D data is therefore needed. This can be achieved by utilising general knowledge learnt from similar or relevant tasks and applying it to the specific task of interest \cite{DeCAF}. Since the only certainty is that the objects are going to be in a real life setting, there is a need for a robust 3D object detection system that can cope in the wild, where object labels might not be clear and can change over time.
 
 
 \section{Literature review}
@@ -82,21 +80,33 @@ Unsupervised learning for creating data cheaply
 
 \section{Project plan}
 
-- collect dataset
+- review literature  -  2/3 weeks
 
-- CNN as baseline for classification
+- collect dataset and format it correctly  -  1 week
 
-- faster-RCNN as baseline for 2D object detection
+- CNN as baseline for classification  -  1 week
 
-- Make baseline 3D object detector using point cloud data
+- write lit review - 1 week
 
-- Transfer 2D model to 3D, elaborate on this
+- faster-RCNN as baseline for 2D object detection   -   2 weeks
+
+- Make baseline 3D object detector using point cloud data   -  2 weeks
+
+- Make faster/ more accurate using 2D object detection  -  2 weeks
+
+- try using masks  - 1 week
 
 - Assess results of transfer learning 3D detector with a few 3D new object examples
 
-- Auto-encoder to find common representation between 2D and 3D?
+- Use 3D model as base for transfer learning using 2D data
 
-- Generating objects in scenes using cut and paste in 3D?
+- Auto-encoder to find common representation between 2D and 3D?  1 week
+
+- Generating objects in scenes using cut and paste in 3D?  2 weeks
+
+- write up report - 3weeks + contingency
+
+
 
 \section{Progress}
 \subsection*{Datasets}
@@ -108,6 +118,13 @@ SUNRGBD benchmark suite \cite{SUNRGBD} is a 3D object dataset consisting of 10,3
 
 To easily access relevant parts of the dataset a pipeline is made; RGD image, depth image, point cloud, 2D labels and bounding box and 3D labels and bounding box. This data pipeline also includes cropping images to the objects within them, for training an image classifier. Other features include taking a subset of object labels and a subset of these images. This is important, as it simplifies the problem when testing which methods are feasible, before training on the whole dataset.
 
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{images/inception_SUNRGBD.jpg}
+  \end{center}
+  \caption{Cropped examples of objects in the SUNRGBD, using it's 2D annotations, showcasing bad labelling.}
+  \label{fig:dodgy_crops}
+\end{figure}
 ** show some photos of the sundata set
 
 - show some examples of the dataset with annotations
