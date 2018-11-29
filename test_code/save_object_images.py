@@ -48,7 +48,7 @@ def create_data_record(dataset):
                 try:
                     cropped_im = crop_image(im, anno)
                     if cropped_im.shape[0] > 0 and cropped_im.shape[1] > 0:  # need to find out why this is happening
-                        file_name = 'SUNRGBD_objects/' + label_str + '/' + str(name_counter)
+                        file_name = 'SUNRGBD_objects/' + label_str + '/' + str(name_counter) +'.jpg'
                         plt.imsave(file_name, cropped_im)
                 except:
                     failed += 1
