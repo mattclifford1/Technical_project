@@ -57,7 +57,8 @@ def create_data_record(dataset):
         if entry % 100 == 0:
             print('{}% '.format(int((entry/len(dataset)*100))))
 
-    print('{}% of objects couldn\'t be cropped'.format(int((failed/name_counter*100))))  
+    print('{}% of objects couldn\'t be cropped'.format(int((failed/name_counter*100)))) 
+    print('{} number of objects found'.format(int(name_counter))) 
 
 if __name__ == '__main__':
     dataset = load_dataset()
