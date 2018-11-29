@@ -1,46 +1,142 @@
 This is BibTeX, Version 0.99d (TeX Live 2017)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: interim.aux
-The style file: plain.bst
+The style file: abbrv.bst
 Database file #1: interim.bib
+You're missing a field name---line 6 of file interim.bib
+ : 
+ : % doi = {10.1007/s11263-015-0816-y},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 32 of file interim.bib
+ : 
+ : % booktitle = {IEEE Winter Conference on Applications of Computer Vision},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 49 of file interim.bib
+ : 
+ : % month = {nov},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 67 of file interim.bib
+ : 
+ : % month = {oct},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--entry type for "3D_dataset" isn't style-file defined
+--line 209 of file interim.bib
+I was expecting a `,' or a `}'---line 215 of file interim.bib
+ : 
+ : % booktitle = {2016 Fourth International Conference on 3D Vision (3DV)},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--entry type for "KITTI" isn't style-file defined
+--line 221 of file interim.bib
+I was expecting a `,' or a `}'---line 227 of file interim.bib
+ : 
+ : % booktitle = {2012 IEEE Conference on Computer Vision and Pattern Recognition},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 244 of file interim.bib
+ : 
+ : % eprint = {1803.06199v2},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 257 of file interim.bib
+ : 
+ : % month = {jun},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 279 of file interim.bib
+ : 
+ : % month = {jun},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 292 of file interim.bib
+ : 
+ : % month = {apr},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 305 of file interim.bib
+ : 
+ : % month = {nov},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 317 of file interim.bib
+ : 
+ : % month = {jul},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 330 of file interim.bib
+ : 
+ : % month = {dec},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 343 of file interim.bib
+ : 
+ : % month = {feb},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 356 of file interim.bib
+ : 
+ : % month = {dec},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 369 of file interim.bib
+ : 
+ : % month = {dec},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 394 of file interim.bib
+ : 
+ : % month = {sep},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 413 of file interim.bib
+ : 
+ : % number = {11},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--empty booktitle in PASCAL_3D
 You've used 40 entries,
             2118 wiz_defined-function locations,
-            672 strings with 10228 characters,
-and the built_in function-call counts, 12999 in all, are:
-= -- 1189
+            658 strings with 9630 characters,
+and the built_in function-call counts, 12043 in all, are:
+= -- 1065
 > -- 907
-< -- 3
+< -- 0
 + -- 357
 - -- 316
-* -- 927
-:= -- 2351
-add.period$ -- 123
+* -- 812
+:= -- 2250
+add.period$ -- 118
 call.type$ -- 40
 change.case$ -- 278
 chr.to.int$ -- 0
-cite$ -- 40
-duplicate$ -- 431
-empty$ -- 799
+cite$ -- 41
+duplicate$ -- 388
+empty$ -- 715
 format.name$ -- 316
-if$ -- 2564
+if$ -- 2331
 int.to.chr$ -- 0
 int.to.str$ -- 40
-missing$ -- 37
-newline$ -- 203
+missing$ -- 35
+newline$ -- 201
 num.names$ -- 80
-pop$ -- 290
+pop$ -- 304
 preamble$ -- 1
 purify$ -- 238
 quote$ -- 0
-skip$ -- 322
+skip$ -- 291
 stack$ -- 0
-substring$ -- 372
-swap$ -- 68
-text.length$ -- 3
+substring$ -- 201
+swap$ -- 40
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 160
-warning$ -- 0
-while$ -- 94
+warning$ -- 1
+while$ -- 80
 width$ -- 42
-write$ -- 408
+write$ -- 395
+(There were 18 error messages)

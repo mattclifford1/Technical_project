@@ -1,32 +1,30 @@
 \begin{thebibliography}{10}
 
 \bibitem{pose_RGBD}
-Vassileios Balntas, Andreas Doumanoglou, Caner Sahin, Juil Sock, Rigas
-  Kouskouridas, and Tae-Kyun Kim.
+V.~Balntas, A.~Doumanoglou, C.~Sahin, J.~Sock, R.~Kouskouridas, and T.-K. Kim.
 \newblock {Pose Guided RGBD Feature Learning for 3D Object Pose Estimation}.
 \newblock {\em ICCV}, 2017.
 
 \bibitem{first_person_mask}
-Gedas Bertasius, Hyun~Soo Park, Stella~X Yu, and Jianbo Shi.
+G.~Bertasius, H.~S. Park, S.~X. Yu, and J.~Shi.
 \newblock {Unsupervised Learning of Important Objects from First-Person
   Videos}.
 \newblock {\em ICCV}, 2017.
 
 \bibitem{subgroup_voting}
-Anders~Glent Buch, Lilita Kiforenko, and Dirk Kraft.
+A.~G. Buch, L.~Kiforenko, and D.~Kraft.
 \newblock {Rotational Subgroup Voting and Pose Clustering for Robust 3D Object
   Recognition}.
 \newblock {\em ICCV}, 2017.
 
 \bibitem{DeCAF}
-Jeff Donahue, Yangqing Jia, Oriol Vinyals, Judy Hoffman, Ning Zhang, Eric
-  Tzeng, and Trevor Darrell.
+J.~Donahue, Y.~Jia, O.~Vinyals, J.~Hoffman, N.~Zhang, E.~Tzeng, and T.~Darrell.
 \newblock {DeCAF: A Deep Convolutional Activation Feature for Generic Visual
   Recognition}.
 \newblock {\em PMLR}, 2013.
 
 \bibitem{cut_paste}
-Debidatta Dwibedi, Ishan Misra, and Martial Hebert.
+D.~Dwibedi, I.~Misra, and M.~Hebert.
 \newblock {Cut, Paste and Learn: Surprisingly Easy Synthesis for Instance
   Detection}.
 \newblock {\em ICCV}, 2017.
@@ -41,190 +39,179 @@ M.~Everingham, L.~Van~Gool, C.~K.~I. Williams, J.~Winn, and A.~Zisserman.
 \bibitem{KITTI}
 A.~Geiger, P.~Lenz, and R.~Urtasun.
 \newblock {Are we ready for autonomous driving? The KITTI vision benchmark
-  suite}.
-\newblock In {\em 2012 IEEE Conference on Computer Vision and Pattern
-  Recognition}, pages 3354--3361. IEEE, jun 2012.
+  suite}, 2012.
 
 \bibitem{fast_RNN}
-Ross Girshick.
+R.~Girshick.
 \newblock {Fast R-CNN}.
-\newblock {\em ICCV}, apr 2015.
+\newblock {\em ICCV}, 2015.
 
 \bibitem{RNN}
-Ross Girshick, Jeff Donahue, Trevor Darrell, and Jitendra Malik.
+R.~Girshick, J.~Donahue, T.~Darrell, and J.~Malik.
 \newblock {Rich feature hierarchies for accurate object detection and semantic
   segmentation}.
-\newblock {\em CVPR}, nov 2014.
+\newblock {\em CVPR}, 2014.
 
 \bibitem{SnapNet}
-Joris Guerry, Alexandre Boulch, Bertrand {Le Saux}, Julien Moras,
-  Aur{\'{e}}lien Plyer, and David Filliat.
+J.~Guerry, A.~Boulch, B.~{Le Saux}, J.~Moras, A.~Plyer, and D.~Filliat.
 \newblock {SnapNet-R: Consistent 3D Multi-View Semantic Labeling for Robotics}.
 \newblock {\em ICCV}, 2017.
 
 \bibitem{synthetic_train}
-Ankur Handa, Viorica PatrAucean, Vijay Badrinarayanan, Simon Stent, and Roberto
-  Cipolla.
+A.~Handa, V.~PatrAucean, V.~Badrinarayanan, S.~Stent, and R.~Cipolla.
 \newblock {Understanding Real World Indoor Scenes With Synthetic Data}.
 \newblock {\em CVPR}, 2016.
 
 \bibitem{mask_RCNN}
-Kaiming He, Georgia Gkioxari, Piotr Doll{\'{a}}r, and Ross Girshick.
+K.~He, G.~Gkioxari, P.~Doll{\'{a}}r, and R.~Girshick.
 \newblock {Mask R-CNN}.
 \newblock {\em ICCV}, 2017.
 
 \bibitem{ResNet}
-Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+K.~He, X.~Zhang, S.~Ren, and J.~Sun.
 \newblock {Deep Residual Learning for Image Recognition}.
-\newblock {\em CVPR}, dec 2015.
+\newblock {\em CVPR}, 2015.
 
 \bibitem{alex_net}
-Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
+A.~Krizhevsky, I.~Sutskever, and G.~E. Hinton.
 \newblock {ImageNet Classification with Deep Convolutional Neural Networks}.
 \newblock {\em NIPS}, 2012.
 
 \bibitem{frustum}
-Jean Lahoud and Bernard Ghanem.
+J.~Lahoud and B.~Ghanem.
 \newblock {2D-Driven 3D Object Detection in RGB-D Images}.
 \newblock {\em ICCV}, 2017.
 
 \bibitem{Yann}
 Y.~Lecun, L.~Bottou, Y.~Bengio, and P.~Haffner.
 \newblock {Gradient-based learning applied to document recognition}.
-\newblock {\em Proceedings of the IEEE}, 86(11):2278--2324, 1998.
+\newblock {\em Proceedings of the IEEE}, 1998.
 
 \bibitem{neural_search}
-Chenxi Liu, Barret Zoph, Maxim Neumann, Jonathon Shlens, Wei Hua, Li-Jia Li,
-  Li~Fei-Fei, Alan Yuille, Jonathan Huang, and Kevin Murphy.
+C.~Liu, B.~Zoph, M.~Neumann, J.~Shlens, W.~Hua, L.-J. Li, L.~Fei-Fei,
+  A.~Yuille, J.~Huang, and K.~Murphy.
 \newblock {Progressive Neural Architecture Search}.
-\newblock {\em CoRR}, dec 2017.
+\newblock {\em CoRR}, 2017.
 
 \bibitem{fast_furious}
-Wenjie Luo and Raquel Urtasun.
+W.~Luo and R.~Urtasun.
 \newblock {Fast and Furious: Real Time End-to-End 3D Detection, Tracking and
   Motion Forecasting with a Single Convolutional Net}.
 \newblock {\em CVPR}, 2018.
 
 \bibitem{survery_on_transfer}
-Sinno~Jialin Pan and Qiang Yang.
+S.~J. Pan and Q.~Yang.
 \newblock {A Survey on Transfer Learning}.
-\newblock {\em IEEE Transactions on Knowledge and Data Engineering},
-  22(10):1345--1359, oct 2010.
+\newblock {\em TKDE}, 2010.
 
 \bibitem{PointNets}
-Charles~R Qi, Wei Liu, Chenxia Wu, Hao Su, and Leonidas~J Guibas.
+C.~R. Qi, W.~Liu, C.~Wu, H.~Su, and L.~J. Guibas.
 \newblock {Frustum PointNets for 3D Object Detection from RGB-D Data}.
 \newblock {\em CVPR}, 2018.
 
 \bibitem{fracture}
-Fracture Reality.
+F.~Reality.
 \newblock Company website.
-\newblock fracturereality.io.
+\newblock \url{fracturereality.io}.
 
 \bibitem{youtube}
-Fracture Reality.
+F.~Reality.
 \newblock Hololens --- airport command and control centre.
-\newblock https://tinyurl.com/yau4cj88.
+\newblock \url{https://tinyurl.com/yau4cj88}.
 
 \bibitem{YOLO}
-Joseph Redmon, Santosh Divvala, Ross Girshick, and Ali Farhadi.
+J.~Redmon, S.~Divvala, R.~Girshick, and A.~Farhadi.
 \newblock {You Only Look Once: Unified, Real-Time Object Detection}.
-\newblock {\em CVPR}, jun 2016.
+\newblock {\em CVPR}, 2016.
 
 \bibitem{faster_RNN}
-Shaoqing Ren, Kaiming He, Ross Girshick, and Jian Sun.
+S.~Ren, K.~He, R.~Girshick, and J.~Sun.
 \newblock {Faster R-CNN: Towards Real-Time Object Detection with Region
   Proposal Networks}.
-\newblock {\em NIPS}, jun 2015.
+\newblock {\em NIPS}, 2015.
 
 \bibitem{latent_surface}
-Zhile Ren and Erik~B Sudderth.
+Z.~Ren and E.~B. Sudderth.
 \newblock {3D Object Detection with Latent Support Surfaces}.
 \newblock {\em CVPR}, 2018.
 
 \bibitem{ILSVRC15}
-Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma,
-  Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein,
-  Alexander~C. Berg, and Li~Fei-Fei.
+O.~Russakovsky, J.~Deng, H.~Su, J.~Krause, S.~Satheesh, S.~Ma, Z.~Huang,
+  A.~Karpathy, A.~Khosla, M.~Bernstein, A.~C. Berg, and L.~Fei-Fei.
 \newblock {ImageNet Large Scale Visual Recognition Challenge}.
-\newblock {\em International Journal of Computer Vision (IJCV)},
-  115(3):211--252, 2015.
+\newblock {\em IJCV}, 2015.
 
 \bibitem{complex_YOLO}
-Martin Simon, Stefan Milz, Karl Amende, and Horst-Michael Gross.
+M.~Simon, S.~Milz, K.~Amende, and H.-M. Gross.
 \newblock {Complex-YOLO: An Euler-Region-Proposal for Real-time 3D Object
   Detection on Point Clouds}.
 \newblock {\em CoRR}, 2018.
 
 \bibitem{VGG16}
-Karen Simonyan and Andrew Zisserman.
+K.~Simonyan and A.~Zisserman.
 \newblock {Very Deep Convolutional Networks for Large-Scale Image Recognition}.
-\newblock {\em CoRR}, sep 2014.
+\newblock {\em CoRR}, 2014.
 
 \bibitem{3D_dataset}
-Thomas Solund, Anders~Glent Buch, Norbert Kruger, and Henrik Aanas.
-\newblock {A Large-Scale 3D Object Recognition Dataset}.
-\newblock In {\em 2016 Fourth International Conference on 3D Vision (3DV)},
-  pages 73--82. IEEE, oct 2016.
+T.~Solund, A.~G. Buch, N.~Kruger, and H.~Aanas.
+\newblock {A Large-Scale 3D Object Recognition Dataset}, 2016.
 
 \bibitem{SUNRGBD}
-Shuran Song, Samuel~P Lichtenberg, and Jianxiong Xiao.
+S.~Song, S.~P. Lichtenberg, and J.~Xiao.
 \newblock {SUN RGB-D: A RGB-D Scene Understanding Benchmark Suite}.
 \newblock {\em CVPR}, 2015.
 
 \bibitem{Incep_ResNet}
-Christian Szegedy, Sergey Ioffe, Vincent Vanhoucke, and Alex Alemi.
+C.~Szegedy, S.~Ioffe, V.~Vanhoucke, and A.~Alemi.
 \newblock {Inception-v4, Inception-ResNet and the Impact of Residual
   Connections on Learning}.
-\newblock {\em AAAI}, feb 2016.
+\newblock {\em AAAI}, 2016.
 
 \bibitem{inception}
-Christian Szegedy, Wei Liu, Pierre Sermanet, Scott Reed, Dragomir Anguelov,
-  Dumitru Erhan, Vincent Vanhoucke, and Andrew Rabinovich.
+C.~Szegedy, W.~Liu, P.~Sermanet, S.~Reed, D.~Anguelov, D.~Erhan, V.~Vanhoucke,
+  and A.~Rabinovich.
 \newblock {Going deeper with convolutions}.
 \newblock {\em CVPR}, 2015.
 
 \bibitem{inceptionV2}
-Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, and
-  Zbigniew Wojna.
+C.~Szegedy, V.~Vanhoucke, S.~Ioffe, J.~Shlens, and Z.~Wojna.
 \newblock {Rethinking the Inception Architecture for Computer Vision}.
-\newblock {\em CVPR}, dec 2015.
+\newblock {\em CVPR}, 2015.
 
 \bibitem{real_time_single}
-Bugra Tekin, Sudipta~N Sinha, and Pascal Fua.
+B.~Tekin, S.~N. Sinha, and P.~Fua.
 \newblock {Real-Time Seamless Single Shot 6D Object Pose Prediction}.
 \newblock {\em CVPR}, 2018.
 
 \bibitem{PASCAL_3D}
-Yu~Xiang, Roozbeh Mottaghi, and Silvio Savarese.
+Y.~Xiang, R.~Mottaghi, and S.~Savarese.
 \newblock {Beyond PASCAL: A benchmark for 3D object detection in the wild}.
-\newblock In {\em IEEE Winter Conference on Applications of Computer Vision},
-  pages 75--82. IEEE, mar 2014.
+\newblock CVPR, 2014.
 
 \bibitem{multi_fusion}
-Bin Xu and Zhenzhong Chen.
+B.~Xu and Z.~Chen.
 \newblock {Multi-Level Fusion based 3D Object Detection from Monocular Images}.
 \newblock {\em CVPR}, 2018.
 
 \bibitem{point_fusion}
-Danfei Xu, Dragomir Anguelov, and Ashesh Jain.
+D.~Xu, D.~Anguelov, and A.~Jain.
 \newblock {PointFusion: Deep Sensor Fusion for 3D Bounding Box Estimation}.
 \newblock {\em CVPR}, 2018.
 
 \bibitem{how_transferable}
-Jason Yosinski, Jeff Clune, Yoshua Bengio, and Hod Lipson.
+J.~Yosinski, J.~Clune, Y.~Bengio, and H.~Lipson.
 \newblock {How transferable are features in deep neural networks?}
-\newblock {\em NIPS}, nov 2014.
+\newblock {\em NIPS}, 2014.
 
 \bibitem{VoxelNet}
-Yin Zhou and Oncel Tuzel.
+Y.~Zhou and O.~Tuzel.
 \newblock {VoxelNet: End-to-End Learning for Point Cloud Based 3D Object
   Detection}.
 \newblock {\em CVPR}, 2018.
 
 \bibitem{scaleable_image}
-Barret Zoph, Vijay Vasudevan, Jonathon Shlens, and Quoc~V. Le.
+B.~Zoph, V.~Vasudevan, J.~Shlens, and Q.~V. Le.
 \newblock {Learning Transferable Architectures for Scalable Image Recognition}.
-\newblock {\em CVPR}, jul 2018.
+\newblock {\em CVPR}, 2018.
 
 \end{thebibliography}
