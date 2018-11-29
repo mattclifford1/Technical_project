@@ -7,6 +7,8 @@
 \usepackage{graphicx}                         % graphics import
 \usepackage{siunitx}                          % easy SI units
 \usepackage{url}
+\usepackage{wrapfig}
+\usepackage{float}
 
 % Change paragraph indentation
 \setlength{\parskip}{10pt}
@@ -38,7 +40,7 @@
 \maketitle
 
 \section{Introduction}
-Explain why 3D object detection is import... cars... 2D is a simplification of the world, 3D gives us a better understanding.
+Explain why 3D object detection is important... cars... 2D is a simplification of the world, 3D gives us a better understanding.
 
 
 
@@ -117,7 +119,15 @@ Show where the is some bad data -  this will be a weakness. Could look into remo
 \subsection*{Image Classification of SUNRGBD objects}
 An image classifier is trained on a subset of object classes. As the easiest task, image classification gives an indication of the quality of the dataset and it's annotations, as well as giving an upper bound on what accuracy any object detectors can achieve.
 
-The state of the art InceptionV3 [REF] CNN architecture is used to demonstrate image classification on a subset of the SUNRGB dataset. 500 examples from the classes: chair, door and table are used. In the SUNRGBD dataset, images contain multiple of the same class objects, for example a room full of the same chair. To give a more general representation of objects and the whole dataset, only one object from each image is sampled in a random order of the images. To reduce training time and improve accuracy, weights pre-trained on ImageNet are used. Since ImageNet has 1000 classes, the feature extraction from the network is very general and should apply well to this similar classification task. Transfer learning of the pre-trained InceptionV3 is achieved by truncating the final classification layer and replacing it with the new desired classes. Re-training the weights is achieved by back propagation of the whole network, with batch normalisation and using the cross-entropy loss function.
+The state of the art InceptionV3 [REF] CNN architecture is used to demonstrate image classification on a subset of the SUNRGB dataset. 500 examples from the classes: chair, door and table are used. In the SUNRGBD dataset, images contain multiple of the same class objects, for example a room full of the same chair. To give a more general representation of objects and the whole dataset, only one object from each image is sampled in a random order of the images. To reduce training time and improve accuracy, weights pre-trained on ImageNet are used. Since ImageNet has 1000 classes, the feature extraction from the network is very general and should apply well to this similar classification task. Transfer learning of the pre-trained InceptionV3 is achieved by truncating the final classification layer and replacing it with the new desired classes. Re-training the weights is achieved by back propagation of the whole network, with batch normalisation and using the cross-entropy loss function. Figure \ref{fig:incept_trans} shows the accuracy of training and validation sets during transfer learning. The model achieves around 94\% accuracy on the validation set. This is very high, and is as expected since the task is very similar to the ImageNet classification task the model was pre-trained on.
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{images/inception_SUNRGBD.jpg}
+  \end{center}
+  \caption{Accuracy for train set (orange) and validation set (blue) for transfer learning of InceptionV3 with weights pre trained on ImageNet. Both curves are smoothed, with the lighter background colour representing the actual data. The model starts to over-fit after around 800 epochs, where the validation accuracy is seen to decrease from it's peak just above 94\% accuracy.}
+  \label{fig:incept_trans}
+\end{figure}
 
 %Create the style, and include the bibliography.
 \bibliography{interim}
