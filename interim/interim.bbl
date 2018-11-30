@@ -85,7 +85,7 @@ J.~Lahoud and B.~Ghanem.
 \bibitem{Yann}
 Y.~Lecun, L.~Bottou, Y.~Bengio, and P.~Haffner.
 \newblock {Gradient-based learning applied to document recognition}.
-\newblock {\em Proceedings of the IEEE}, 1998.
+\newblock {\em Proc. IEEE}, 1998.
 
 \bibitem{neural_search}
 C.~Liu, B.~Zoph, M.~Neumann, J.~Shlens, W.~Hua, L.-J. Li, L.~Fei-Fei,
@@ -177,6 +177,11 @@ C.~Szegedy, W.~Liu, P.~Sermanet, S.~Reed, D.~Anguelov, D.~Erhan, V.~Vanhoucke,
 C.~Szegedy, V.~Vanhoucke, S.~Ioffe, J.~Shlens, and Z.~Wojna.
 \newblock {Rethinking the Inception Architecture for Computer Vision}.
 \newblock {\em CVPR}, 2015.
+
+\bibitem{incepV3}
+C.~Szegedy, V.~Vanhoucke, S.~Ioffe, J.~Shlens, and Z.~Wojna.
+\newblock {Rethinking the Inception Architecture for Computer Vision}.
+\newblock {\em CVPR}, 2016.
 
 \bibitem{real_time_single}
 B.~Tekin, S.~N. Sinha, and P.~Fua.

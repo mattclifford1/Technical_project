@@ -98,45 +98,45 @@ I was expecting a `,' or a `}'---line 413 of file interim.bib
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Warning--empty booktitle in PASCAL_3D
-You've used 40 entries,
+You've used 41 entries,
             2118 wiz_defined-function locations,
-            658 strings with 9630 characters,
-and the built_in function-call counts, 12043 in all, are:
-= -- 1065
-> -- 907
+            661 strings with 9726 characters,
+and the built_in function-call counts, 12376 in all, are:
+= -- 1094
+> -- 935
 < -- 0
-+ -- 357
-- -- 316
-* -- 812
-:= -- 2250
-add.period$ -- 118
-call.type$ -- 40
-change.case$ -- 278
++ -- 368
+- -- 326
+* -- 837
+:= -- 2313
+add.period$ -- 121
+call.type$ -- 41
+change.case$ -- 286
 chr.to.int$ -- 0
-cite$ -- 41
-duplicate$ -- 388
-empty$ -- 715
-format.name$ -- 316
-if$ -- 2331
+cite$ -- 42
+duplicate$ -- 398
+empty$ -- 732
+format.name$ -- 326
+if$ -- 2394
 int.to.chr$ -- 0
-int.to.str$ -- 40
-missing$ -- 35
-newline$ -- 201
-num.names$ -- 80
-pop$ -- 304
+int.to.str$ -- 41
+missing$ -- 36
+newline$ -- 206
+num.names$ -- 82
+pop$ -- 312
 preamble$ -- 1
-purify$ -- 238
+purify$ -- 245
 quote$ -- 0
-skip$ -- 291
+skip$ -- 298
 stack$ -- 0
-substring$ -- 201
-swap$ -- 40
+substring$ -- 206
+swap$ -- 41
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 160
+type$ -- 164
 warning$ -- 1
-while$ -- 80
-width$ -- 42
-write$ -- 395
+while$ -- 82
+width$ -- 43
+write$ -- 405
 (There were 18 error messages)
