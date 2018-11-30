@@ -28,6 +28,9 @@ def load_dataset():
 def create_data_record(dataset):
     class_we_care = ['chair', 'door', 'table']    # taking subset of objects
     name_counter = 0
+    chair_counter = 0
+    door_counter = 0
+    table_counter = 0
     failed = 0
     # create image directories
     for dir_name in class_we_care:
@@ -52,8 +55,23 @@ def create_data_record(dataset):
                         plt.imsave(file_name, cropped_im)
                 except:
                     failed += 1
+                if label_str == 'chair':
+                    chair_counter += 1
+                if label_str == 'door':
+                    door_counter += 1
+                if label_str == 'table':
+                    table_counter += 1
                 name_counter += 1
+                break   # take new scece so objects not overly similar
 
+            if chair_counter >499 or door_counter>499 or table_counter>499:
+                if chair_counter >199:
+                    chair_counter = 0
+                if door_counter >199:
+                    door_counter = 0 
+                if table_counter >199:
+                    table_counter = 0
+                class_we_care.pop(class_we_care.index(label_str))  # can do this as should have gone over threshold this it
         if entry % 100 == 0:
             print('{}% '.format(int((entry/len(dataset)*100))))
 
