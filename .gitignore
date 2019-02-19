@@ -5,6 +5,12 @@ SUN-RGBD_convert_matlab.pickle
 SUN-RGBD_file_list.pickle
 test_code/SUNRGBD_objects
 
+# tensorflow models (large)
+pretrained_models/
+faster_rcnn_inception_v2_coco_2018_01_28/
+faster_rcnn_resnet101_coco_2018_01_28/
+faster_rcnn_resnet101_kitti_2018_01_28/
+
 # tensorflow record data record files (large)
 *.tfrecords
 

@@ -9,8 +9,10 @@ import pptk
 
 import utils
 
+# plotting functions for visulising the data and bounding boxes.
 
-def bb_2D(im, bb):
+
+def bb_2D(im, bb):    # to do: make it take filename as input for saving
 	# write code to show image with bounding box drawn 
 	# funcitonality:
 	# 			might need to give different colours for ground truth, correct, incorrect
@@ -18,7 +20,20 @@ def bb_2D(im, bb):
 	return 0
 
 
-def bb_3D(points, bb_sizes, bb_centers, bb_rotations):
+def bb_3D(ax, points, bb_sizes, bb_centers, bb_rotations, colour='green'):
+	# plot bounding boxes
+	for label_num in range(len(bb_sizes)):
+		# get current label's bounding box parameters
+		bb_rotation = bb_rotations[label_num]
+		bb_size = bb_sizes[label_num]
+		bb_center = bb_centers[label_num]
+		plot_cuboid(ax, bb_size, bb_center, bb_rotation, colour)
+
+	plt.axis('equal')
+	plt.show()
+
+
+def point_cloud(points): # to do: make it take filename as input for saving
 	# downsample the point cloud (for mpl)
 	pcd = open3d.PointCloud()
 	pcd.points = open3d.Vector3dVector(points)
@@ -30,20 +45,11 @@ def bb_3D(points, bb_sizes, bb_centers, bb_rotations):
 	fig = plt.figure()
 	ax = fig.add_subplot(111, projection='3d')
 	ax.scatter(downpoints[:,0], downpoints[:,1], downpoints[:,2], s=0.1)
-
-	# plot bounding boxes
-	for label_num in range(len(bb_sizes)):
-		# get current label's bounding box parameters
-		bb_rotation = bb_rotations[label_num]
-		bb_size = bb_sizes[label_num]
-		bb_center = bb_centers[label_num]
-		plot_cuboid(ax, bb_size, bb_center, bb_rotation, colour='red')
-
-	plt.axis('equal')
-	plt.show()
+	return ax
 
 
-def plot_cuboid(ax, bb_size, bb_center, bb_rotation, colour='green'):
+
+def plot_cuboid(ax, bb_size, bb_center, bb_rotation, colour):
 	# set up corners around the origin
 	corners = np.array([[-bb_size[0], bb_size[0], -bb_size[0], bb_size[0], -bb_size[0], bb_size[0], -bb_size[0], bb_size[0]],
 	                    [-bb_size[1],-bb_size[1], -bb_size[1],-bb_size[1],  bb_size[1], bb_size[1],  bb_size[1], bb_size[1]],
@@ -62,20 +68,20 @@ def plot_cuboid(ax, bb_size, bb_center, bb_rotation, colour='green'):
 if __name__ == '__main__':
 	data_num = 0
 	meta_data = utils.load_SUNRGBD_meta()
+	# get current data's meta data
 	depth = utils.open_depth(meta_data, data_num)
 	points = utils.make_point_cloud(depth, meta_data, data_num)
-
-	bb_rotations = meta_data[data_num][6]
-	bb_sizes = meta_data[data_num][7]
-	bb_centers = meta_data[data_num][8]
-	bb_3D(points, bb_sizes, bb_centers, bb_rotations)
-
-
-
+	(bb_rotations, bb_sizes, bb_centers) = utils.get_3D_bb(meta_data, data_num)
+	# plot
+	ax = point_cloud(points)
+	bb_3D(ax, points, bb_sizes, bb_centers, bb_rotations)
+	# pptk has the nicest viewer
+	v = pptk.viewer(points)
 
 
-# pptk has the nicest viewer
-# v = pptk.viewer(points3d)
+
+
+
 
 # v =pptk.viewer(points)
 # # v.load(points)
