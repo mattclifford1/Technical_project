@@ -38,7 +38,7 @@ class SUNRGBD:
         self.test_epoch = 0
         self.train_size = 7751   # 75%
         self.test_size = 2584    # 25%
-        self.label_white_list = ['bed','table','sofa','chair','sink','desk','lamp','computer','garbage_bin','shelf']
+        self.label_white_list = ['door','table','chair']#['bed','table','sofa','chair','sink','desk','lamp','computer','garbage_bin','shelf']
         self.num_classes = len(self.label_white_list)
         self.load_dataset()
 

@@ -28,11 +28,12 @@ def crop_image_2D(im, anno):
 
 class SUNRGBD:
 
-    def __init__(self, batch_size, train_num_per_class, test_num_per_class):   #TODO work data_type
+    def __init__(self, batch_size, train_num_per_class, test_num_per_class, rgbd_size):   #TODO work data_type
         # if data_size > 1 or data_size <= 0:
         #     raise Exception('data_size is in set (0, 1]. Representing percentage of dataset to use')
         self.train_num_per_class = train_num_per_class
         self.test_num_per_class = test_num_per_class
+        self.rgbd_size = rgbd_size
         self.batch_size = batch_size
         self.train_index = 0
         self.test_index = 0
@@ -181,69 +182,79 @@ class SUNRGBD:
         class_count = {}
         for single_class in self.label_white_list:
             class_count[single_class] = 0
-        self.train_rgb = [0]*self.train_size
-        self.train_depth = [0]*self.train_size
-        self.train_points = [0]*self.train_size
-        # we don't know the size of these:
+        self.train_rgb = []
+        self.train_depth = []
+        self.train_points = []
         self.train_2D_bb = []     
         self.train_3D_bb = []
         self.train_labels = []
         self.train_labels_image = []
+        train_count = 0
         print('Processing training data')
         for entry in tqdm(range(self.train_size)):
+            used_entry = False
             if sum(class_count.values()) == self.num_classes * self.test_num_per_class:
                 break
-            self.train_rgb[entry] = utils.open_rgb(meta_data, entry)
-            self.train_depth[entry] = utils.open_depth(meta_data, entry)
-            self.train_points[entry] = utils.make_point_cloud(self.train_depth[entry], meta_data, entry)
             bbs_2D = utils.get_2D_bb(meta_data, entry)
             bbs_3D = utils.get_3D_bb(meta_data, entry)
             labels = utils.get_label(meta_data, entry)
-            for objekt in range(len(labels)):
+            for objekt in range(min(len(labels),len(bbs_2D),len(bbs_3D))):
                 if not labels[objekt] in self.label_white_list:  # only take the objects we care about
                     continue
                 if class_count[labels[objekt]] >= self.train_num_per_class:  # limit examples per class
                     continue
+                class_count[labels[objekt]] += 1
                 self.train_2D_bb.append(bbs_2D[objekt]) 
                 # TODO: could think about converting rotation matrix (bbs_3D[0][objekt][0:2,0:2]) into theta
                 self.train_3D_bb.append(np.concatenate([bbs_3D[0][objekt][0:2,0:2].reshape(-1), bbs_3D[1][objekt], bbs_3D[2][objekt]]))
-                self.train_labels_image.append(entry)   # need to keep track of what labels matches each image
+                self.train_labels_image.append(train_count)   # need to keep track of what labels matches each image
                 self.train_labels.append(one_hot_vector(self.label_white_list.index(labels[objekt]), self.num_classes))
+                used_entry = True           
+            if used_entry:
+                self.train_rgb.append(utils.cv2.resize(utils.open_rgb(meta_data, entry), self.rgbd_size))
+                self.train_depth.append(utils.open_depth(meta_data, entry))
+                self.train_points.append(utils.make_point_cloud(self.train_depth[train_count], meta_data, entry))
+                self.train_depth[train_count] = utils.cv2.resize(self.train_depth[train_count], self.rgbd_size)
+                train_count += 1
+
 
     def assign_test_data(self, meta_data):
         ## set up TESTING data properties --------------------------------------------------
         class_count = {}
         for single_class in self.label_white_list:
             class_count[single_class] = 0
-        self.test_rgb = [0]*self.test_size
-        self.test_depth = [0]*self.test_size
-        self.test_points = [0]*self.test_size
-        # we don't know the size of these:
+        self.test_rgb = []
+        self.test_depth = []
+        self.test_points = []
         self.test_2D_bb = []     
         self.test_3D_bb = []
         self.test_labels = []
         self.test_labels_image = []
-        test_counter = 0
+        test_count = 0
         print('Processing test data')
         for entry in tqdm(range(self.train_size, self.train_size+self.test_size)):
+            used_entry = False
             if sum(class_count.values()) == self.num_classes * self.test_num_per_class:
                 break
-            self.test_rgb[test_counter] = utils.open_rgb(meta_data, entry)
-            self.test_depth[test_counter] = utils.open_depth(meta_data, entry)
-            self.test_points[test_counter] = utils.make_point_cloud(self.test_depth[test_counter], meta_data, entry)
             bbs_2D = utils.get_2D_bb(meta_data, entry)
             bbs_3D = utils.get_3D_bb(meta_data, entry)
             labels = utils.get_label(meta_data, entry)
-            for objekt in range(len(bbs_2D)):
+            for objekt in range(min(len(labels),len(bbs_2D),len(bbs_3D))):
                 if not labels[objekt] in self.label_white_list:  # only take the objects we care about
                     continue
                 if class_count[labels[objekt]] >= self.train_num_per_class:  # limit examples per class
                     continue
+                class_count[labels[objekt]] += 1
                 self.test_2D_bb.append(bbs_2D[objekt]) 
                 # todo: could think about converting rotation matrix (bbs_3D[0][objekt][0:2,0:2]) into theta
                 self.test_3D_bb.append(np.concatenate([bbs_3D[0][objekt][0:2,0:2].reshape(-1), bbs_3D[1][objekt], bbs_3D[2][objekt]]))
-                self.test_labels_image.append(test_counter)   # need to keep track of what labels matches each image
+                self.test_labels_image.append(test_count)   # need to keep track of what labels matches each image
                 self.test_labels.append(one_hot_vector(self.label_white_list.index(labels[objekt]), self.num_classes))
-            test_counter += 1
-
+                used_entry = True
+            if used_entry:
+                self.test_rgb.append(utils.cv2.resize(utils.open_rgb(meta_data, entry), self.rgbd_size))
+                self.test_depth.append(utils.open_depth(meta_data, entry))
+                self.test_points.append(utils.make_point_cloud(self.test_depth[test_count], meta_data, entry))
+                self.test_depth[test_count] = utils.cv2.resize(self.test_depth[test_count], self.rgbd_size)
+                test_count += 1
 
